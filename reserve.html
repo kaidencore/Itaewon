@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alatsi&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+    <title>Itaewon</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-box">
+            <a href="index.html">
+                <img class="logo" src="assets/logo.png">
+            </a>
+        </div>
+    </header>
+    <nav>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="reserve.html">Reserve</a>
+        </div>
+    </nav>
+    <div class="first-box">
+        <div class="reserveBox">
+            <form id="reservationForm">
+                <div class="form-group">
+                    <label for="rDate">Date:</label>
+                    <input type="date" id="rDate" name="rDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="rTimeslot">Timeslot:</label>
+                    <select id="rTimeslot" required>
+                        <option value="11:00 AM">11:00 AM</option>
+                        <option value="12:00 PM">12:00 PM</option>
+                        <option value="1:00 PM">1:00 PM</option>
+                        <option value="2:00 PM">2:00 PM</option>
+                        <option value="3:00 PM">3:00 PM</option>
+                        <option value="4:00 PM">4:00 PM</option>
+                        <option value="5:00 PM">5:00 PM</option>
+                        <option value="6:00 PM">6:00 PM</option>
+                        <option value="7:00 PM">7:00 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rTable">Table:</label>
+                    <select id="rTable" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rName">Name:</label>
+                    <input type="text" id="rName" name="rName" required>
+                </div>
+                <div class="form-group">
+                    <label for="rEmail">Email:</label>
+                    <input type="email" id="rEmail" name="rEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="rPhone">Phone:</label>
+                    <input type="tel" id="rPhone" name="rPhone" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit Reservation</button>
+                </div>
+            </form>
+
+            <span class="emailSentMsg">Your OTP has been sent to your email</span>
+            <div class="otpverify">
+                <input type="text" id="otp_inp" placeholder="Enter the OTP">
+                <button id="otp_btn">Verify</button>
+            </div>
+
+            <span class="verifiedMsg">Email Verified</span>
+            <span class="invalidMsg">Invalid OTP</span>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-box">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>Contact Us</h4>
+                    <p>Mayor Santiago Lotilla St,</p>
+                    <p>Sibalom, Philippines</p>
+                    <p>Phone: +123-456-7890</p>
+                </div>
+                <div class="social-media">
+                    <h4>Connect With Us</h4>
+                    <div class="social-media-links">
+                        <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
+                        <a href="https://twitter.com/"><i class="bi bi-twitter"></i></a>
+                        <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+        function sendOTP(email, reservationId) {
+            const otp_val = generateOTP();
+            const reservationKey = reservationId;
+
+            db.ref(`Reservations/${reservationId}`).once('value').then((snapshot) => {
+                const reservationData = snapshot.val();
+
+                const rDate = reservationData.Date;
+                const rTimeslot = reservationData.Timeslot;
+                const rTable = reservationData.Table;
+
+                const emailbody = `
+            <div style="font-family: Arial, sans-serif; padding: 20px;">
+                <h2 style="color: #333; margin-bottom: 20px;">ITAEWON Reservation</h2>
+                <p style="color: #666;">Dear Customer,</p>
+                <p style="color: #666;">Thank you for making a reservation with us. Below are the details of your reservation:</p>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li><strong>Date:</strong> ${rDate}</li>
+                    <li><strong>Timeslot:</strong> ${rTimeslot}</li>
+                    <li><strong>Table:</strong> Table ${rTable}</li>
+                </ul>
+                <p style="color: #666;">Your One-Time Password (OTP) for verification is:</p>
+                <h1 style="color: #f00; font-size: 36px; margin: 20px 0;">${otp_val}</h1>
+                <p style="color: #666;">Please enter this OTP in the provided field to verify your email address and confirm your reservation.</p>
+                <p style="color: #666;">If you did not make this reservation, please ignore this message.</p>
+                <p style="color: #666;">Best regards,</p>
+                <p style="color: #666;">The ITAEWON Team</p>
+            </div>
+            `;
+
+                Email.send({
+                    SecureToken: "9071e664-f715-4052-aacd-450a180945e9",
+                    To: email,
+                    From: "kyleg.velez@gmail.com",
+                    Subject: "ITAEWON Reservation",
+                    Body: emailbody,
+                }).then((message) => {
+                    if (message === "OK") {
+                        const emailSentMsg = document.querySelector('.emailSentMsg');
+
+                        emailSentMsg.style.display = "block";
+
+                        displayOTPVerification();
+                        verifyOTP(otp_val, reservationKey);
+                    }
+                });
+            });
+        }
+
+        function generateOTP() {
+            return Math.floor(Math.random() * 10000);
+        }
+
+        function displayOTPVerification() {
+            const otpverify = document.querySelector('.otpverify');
+            otpverify.style.display = "flex";
+        }
+
+        function verifyOTP(otp_val, reservationKey) {
+            const otp_inp = document.getElementById('otp_inp');
+            const otp_btn = document.getElementById('otp_btn');
+            const emailSentMsg = document.querySelector('.emailSentMsg');
+            const verifiedMsg = document.querySelector('.verifiedMsg');
+            const invalidMsg = document.querySelector('.invalidMsg');
+
+            otp_btn.addEventListener('click', () => {
+                if (otp_inp.value == otp_val) {
+
+                    emailSentMsg.style.display = "none";
+                    invalidMsg.style.display = "none";
+                    verifiedMsg.style.display = "block";
+
+                    db.ref("Reservations/" + reservationKey).update({
+                        Status: "Confirmed"
+                    });
+
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                } else {
+                    emailSentMsg.style.display = "none";
+                    verifiedMsg.style.display = "none";
+                    invalidMsg.style.display = "block";
+                }
+            });
+        }
+
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "itaewon-c6b70.firebaseapp.com",
+            projectId: "itaewon-c6b70",
+            storageBucket: "itaewon-c6b70.appspot.com",
+            messagingSenderId: "240612686931",
+            appId: "1:240612686931:web:47f095536d9141886ddaa6",
+            measurementId: "G-T5MLZ5X2D0"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        $(document).ready(function () {
+            $("#reservationForm").submit(function (e) {
+                e.preventDefault();
+
+                const rName = $("#rName").val();
+                const rEmail = $("#rEmail").val();
+                const rPhone = $("#rPhone").val();
+                const rDate = $("#rDate").val();
+                const rTimeslot = $("#rTimeslot").val();
+                const rTable = $("#rTable").val();
+                const rStatus = "Unconfirmed";
+                const timestamp = firebase.database.ServerValue.TIMESTAMP;
+
+                const newReservationRef = db.ref("Reservations").push();
+                const reservationId = newReservationRef.key;
+
+                newReservationRef.set({
+                    Name: rName,
+                    Email: rEmail,
+                    Phone: rPhone,
+                    Date: rDate,
+                    Timeslot: rTimeslot,
+                    Table: rTable,
+                    Status: rStatus,
+                    Timestamp: timestamp
+                })
+                    .then(() => {
+                        sendOTP(rEmail, reservationId);
+                        $("#reservationForm")[0].reset();
+                    })
+                    .catch((error) => {
+                        console.error("Error adding reservation: ", error);
+                    });
+            });
+        });
+
+
+        function updateTableOptions(date, timeslot) {
+            const tableSelect = document.getElementById('rTable');
+            tableSelect.value = 'default';
+
+            db.ref('Reservations').orderByChild('Date').equalTo(date).once('value').then((snapshot) => {
+                const reservations = snapshot.val();
+
+                const reservedTables = Object.values(reservations || {}).filter(reservation => reservation.Timeslot === timeslot).map(reservation => reservation.Table);
+
+                const allTableOptions = tableSelect.querySelectorAll('option');
+
+                allTableOptions.forEach(option => {
+                    option.disabled = false;
+                });
+
+                reservedTables.forEach(reservedTable => {
+                    const option = tableSelect.querySelector(`option[value='${reservedTable}']`);
+                    if (option) {
+                        option.disabled = true;
+                    }
+                });
+
+                tableSelect.value = 'default';
+            });
+        }
+
+        const dateSelect = document.getElementById('rDate');
+        const timeslotSelect = document.getElementById('rTimeslot');
+        timeslotSelect.value = 'default';
+
+        dateSelect.addEventListener('change', (event) => {
+            updateTableOptions(event.target.value, timeslotSelect.value);
+            timeslotSelect.value = 'default';
+        });
+
+        timeslotSelect.addEventListener('change', (event) => {
+            updateTableOptions(dateSelect.value, event.target.value);
+        });
+
+        updateTableOptions(dateSelect.value, timeslotSelect.value);
+    </script>
+</body>

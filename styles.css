@@ -1,0 +1,617 @@
+.alatsi-regular {
+    font-family: "Alatsi", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+header {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+
+.logo {
+    height: 80px;
+}
+
+nav {
+    width: auto;
+    padding: 15px;
+    background-image: linear-gradient(#c51515, #871111);
+    box-shadow: 0 0 5px black;
+    user-select: none;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links a {
+    font-family: "Alatsi", sans-serif;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    margin-left: 40px;
+}
+
+.nav-links a:hover {
+    opacity: 80%;
+    cursor: pointer;
+}
+
+/*firstbox styles*/
+.first-box {
+    display: flex;
+    background-color: rgb(29, 26, 40);
+    user-select: none;
+}
+
+.greeting-box {
+    width: 50%;
+}
+
+.greeting {
+    margin: 100px;
+    font-family: "Alatsi", sans-serif;
+    font-size: 70px;
+    color: #fff;
+}
+
+.greeting-s {
+    font-family: "Arial", sans-serif;
+    margin: 20px 0;
+    font-size: 21px;
+}
+
+.map-section {
+    font-family: "Alatsi", sans-serif;
+    background-color: rgb(29, 26, 40);
+    height: auto;
+}
+
+.map {
+    width: 500px;
+}
+
+.map-desc {
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+    top: -50px;
+    font-weight: 700;
+}
+
+.duration-text {
+    font-size: 13px;
+    text-shadow: 1px 0.5px #000;
+    fill: #eee;
+}
+
+/*secondbox styles*/
+.second-box {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+
+.reservation {
+    font-family: "Alatsi", sans-serif;
+    font-size: 16px;
+    padding: 40px;
+    color: rgb(50, 50, 50);
+}
+
+.reserveBtn {
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: chocolate;
+    color: #fff;
+    width: auto;
+    margin: 20px;
+    text-decoration: none;
+}
+
+
+.reserveBtn:hover {
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.third-box {
+    display: flex;
+    background-color: rgb(29, 26, 40);
+    border-bottom: 2px solid rgba(88, 88, 88, 0.2);
+    user-select: none;
+}
+
+.pictures {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.picture-section {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.picture-section img {
+    display: block;
+    width: 30%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(50, 50, 50, 0.2);
+}
+
+/*menu styling*/
+.fourth-box {
+    font-family: 'Alatsi';
+    background-color: rgb(29, 26, 40);
+    padding: 20px;
+    border-bottom: 2px solid rgba(88, 88, 88, 0.2);
+    user-select: none;
+}
+
+.menuTitleContainer{
+    margin-top: 50px;
+}
+
+.menuTitle{
+    color: white;
+    font-size: 40px;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    user-select: none;
+}
+
+.menu-section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 1500px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s;
+}
+
+.menu-item:hover {
+    transform: scale(1.1);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    touch-action: none;
+}
+
+.menu-item p {
+    margin: 0;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(210, 105, 30);
+}
+
+.menu-section2 {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 20px;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 1500px;
+}
+
+.menu-item2 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s;
+    background-image: url('assets/toppings.jpg');
+    background-size: cover; 
+    background-position: center;
+    overflow: hidden;
+}
+
+.menu-item2:hover {
+    transform: scale(1.1);
+}
+
+.menu-item2 p {
+    margin: 0;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #00000088;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+}
+
+.footer-box {
+    padding: 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-info,
+.social-media {
+    flex: 1;
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+.social-media-links {
+    display: flex;
+    gap: 10px;
+    background-color: transparent;
+}
+
+.social-media-links a {
+    color: white;
+}
+
+
+@media screen and (max-width: 1000px) {
+    /*firstbox*/
+    .map {
+        width: 400px;
+    }
+
+    /*fourthbox*/
+    .menu-section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .menu-section2 {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        height: 60px;
+    }
+
+    header {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    /*firstbox*/
+    .first-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    .greeting-box {
+        display: none;
+    }
+
+    .map {
+        height: 600px;
+        width: 600px;
+    }
+
+    .map-desc {
+        color: white;
+        font-size: 18px;
+        position: relative;
+        top: -20px;
+        font-weight: 700;
+    }
+
+    /*fourthbox*/
+    .menu-section {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .menu-section2 {
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+    }
+
+    .menu-item2 {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        height: 80%;
+        width: 80%;
+    }
+    
+    .menu-item2 p {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        height: 40px;
+    }
+
+    header {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 15px;
+        margin: 5px;
+    }
+
+    .first-box {
+        display: flex;
+        background-color: rgb(29, 26, 40);
+    }
+
+    .greeting-box {
+        display: none;
+    }
+
+    .greeting {
+        margin: 100px;
+        font-family: "Alatsi", sans-serif;
+        font-size: 70px;
+        color: #fff;
+    }
+
+    .map-section {
+        margin: 0 50px;
+        background-color: rgb(29, 26, 40);
+        height: auto;
+    }
+
+    .map {
+        width: 300px;
+        height: 300px;
+    }
+
+    .map-desc {
+        color: white;
+        font-size: 10px;
+        position: relative;
+        top: -10px;
+        font-weight: 700;
+    }
+
+    /*secondbox styles*/
+    .second-box {
+        width: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .reservation {
+        font-family: "Alatsi", sans-serif;
+        font-size: 13px;
+        padding: 20px;
+        color: rgb(50, 50, 50);
+        text-align: center;
+    }
+
+    .reserveBtn {
+        border: none;
+        padding: 8px;
+        border-radius: 5px;
+        background-color: chocolate;
+        color: #fff;
+        font-weight: 700;
+        font-size: 10px;
+        width: auto;
+        margin: 5px;
+    }
+
+    .reserveBtn:hover {
+        opacity: 80%;
+        cursor: pointer;
+    }
+
+    /*fourthbox*/
+    .menu-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 350px) {
+    /*firstbox*/
+    .map-desc {
+        color: white;
+        font-size: 10px;
+        position: relative;
+        top: -10px;
+        font-weight: 700;
+    }
+
+    /*secondbox*/
+    .reservation a{
+        display: block;
+        margin-left: 55px;
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 305px) {
+    body{
+        display: none;
+    }
+}
+
+
+/*reserve.html styling*/
+.reserveBox {
+    font-family: "Alatsi", sans-serif;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.reserveBox .form-group {
+    margin-bottom: 15px;
+}
+
+.reserveBox label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.reserveBox input[type="date"] {
+    font-family: "Alatsi", sans-serif;
+    width: 92%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.89-1.99 2L3 18c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H5V8h14v10z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+
+.reserveBox input[type="text"],
+.reserveBox input[type="email"],
+.reserveBox input[type="tel"],
+.reserveBox select {
+    font-family: "Alatsi", sans-serif;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.reserveBox input[type="text"],
+.reserveBox input[type="email"],
+.reserveBox input[type="tel"]{
+    width: 92%;
+}
+
+.reserveBox select {
+    font-family: "Alatsi", sans-serif;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    padding-right: 30px;
+}
+
+.reserveBox button[type="submit"],
+.reserveBox button#otp_btn {
+    font-family: "Alatsi", sans-serif;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: chocolate;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.reserveBox button[type="submit"]:hover,
+.reserveBox button#otp_btn:hover {
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.reserveBox .otpverify {
+    font-family: "Alatsi", sans-serif;
+    display: none;
+}
+
+.reserveBox .otpverify input[type="text"]{
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.reserveBox .otpverify button {
+    margin-left: 10px;
+    border: none;
+}
+
+.reserveBox .otpverify button:hover {
+    opacity: 80%;
+    cursor: pointer;
+}
+.reserveBox .emailSentMsg,
+.reserveBox .verifiedMsg,
+.reserveBox .invalidMsg {
+    font-family: "Alatsi", sans-serif;
+    display: none;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.reserveBox .verifiedMsg, .emailSentMsg{
+    color: rgb(25, 160, 25);
+}
+
+.reserveBox .invalidMsg{
+    color: rgb(200, 55, 55);
+}
